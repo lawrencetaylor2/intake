@@ -12,9 +12,10 @@ if (!url)
     } Postgres not found.`
   );
 
+ console.log(`database connection at : ${url}`);
 export default {
   dialect: 'postgresql',
   dbCredentials: { url },
-  schema: './db/schema/',
+  schema: './db/schema/index.ts',
   out: './drizzle',
 } satisfies Config;
