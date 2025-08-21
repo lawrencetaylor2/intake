@@ -1,0 +1,1 @@
+// Export the database schema for drizzle-kit
