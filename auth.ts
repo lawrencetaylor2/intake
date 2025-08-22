@@ -42,6 +42,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       })
       if (
         googleAccount &&
+        googleAccount.refresh_token &&
         googleAccount.expires_at &&
         googleAccount.expires_at * 1000 < Date.now()
       ) {
