@@ -1,13 +1,3 @@
-// Documents (consent forms, uploads)
-/*CREATE TABLE documents (
-document_id UUID PRIMARY KEY,
-tenant_id UUID NOT NULL REFERENCES tenants(tenant_id),
-patient_id UUID NOT NULL REFERENCES patients(patient_id),
-file_path TEXT NOT NULL,
-doc_type VARCHAR(100),
-created_at TIMESTAMP DEFAULT now()
-);*/
-
 import {
   timestamp,
   pgTable,
@@ -19,6 +9,15 @@ import { relations } from 'drizzle-orm'
 import { organization } from './authtables'
 import { patients } from './patient'
 
+// Documents (consent forms, uploads)
+/*CREATE TABLE documents (
+document_id UUID PRIMARY KEY,
+tenant_id UUID NOT NULL REFERENCES tenants(tenant_id),
+patient_id UUID NOT NULL REFERENCES patients(patient_id),
+file_path TEXT NOT NULL,
+doc_type VARCHAR(100),
+created_at TIMESTAMP DEFAULT now()
+);*/
 export const documents = pgTable(
   'documents',
   {
