@@ -22,3 +22,10 @@ export {
   patientsRelations,
   organizationToPatientsRelations,
 } from './patient'
+
+export {
+  serviceRequestStatusEnum,
+  serviceRequests,
+  serviceRequestRelations,
+  patientToServiceRequestsRelations,
+} from './serviceRequest'
