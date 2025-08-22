@@ -29,3 +29,9 @@ export {
   serviceRequestRelations,
   patientToServiceRequestsRelations,
 } from './serviceRequest'
+
+export {
+  documents,
+  documentsRelations,
+  patientToDocumentsRelations,
+} from './documents'
