@@ -15,5 +15,10 @@ export {
   accountRelations,
   sessionRelations,
   organizationRelations,
- 
-} from "./authtables";
+} from './authtables'
+
+export {
+  patients,
+  patientsRelations,
+  organizationToPatientsRelations,
+} from './patient'
