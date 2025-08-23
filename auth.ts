@@ -6,6 +6,7 @@ import { DrizzleAdapter } from '@auth/drizzle-adapter'
 import db from '@/drizzle.server'
 import {
   accounts,
+  roles,
   authenticators,
   sessions,
   users,
@@ -89,7 +90,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           session.error = 'RefreshTokenError'
         }
       }
-
+      // Get the user role for the organization
+      const userRoles = await db.query.roles.findMany({
+        where: eq(roles.userId, session.user.id),
+      })
+      session.user.roles = userRoles
       return session
     },
     authorized: async ({ auth }) => {
@@ -98,9 +103,3 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     },
   },
 })
-
-declare module 'next-auth' {
-  interface Session {
-    error?: 'RefreshTokenError'
-  }
-}

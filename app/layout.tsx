@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className={`border-solid border-b-1 w-full -mb-4 -pb-4`}>
+        <header className={`border-solid border-b-1 w-full -mb-1 `}>
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/">
@@ -46,7 +46,7 @@ export default function RootLayout({
                 src="/Intake_Ehr_logo-200px.png"
                 alt="Intake EHR"
                 width={150}
-                height={50}
+                height={100}
               />
             </Link>
 
