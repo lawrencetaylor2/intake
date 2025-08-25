@@ -17,15 +17,17 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 export default function Login() {
   const { data: session, update, status } = useSession()
   if (status === 'authenticated') {
-    return (
+    redirect('/dashboard')
+    /*    return (
       <div>
         <p>Welcome, {session.user?.email}</p>
         <Button onClick={() => signOut()}>Sign Out</Button>
       </div>
-    )
+    )*/
   } else if (status === 'unauthenticated') {
     return (
       <Card className="w-full max-w-sm">
@@ -81,14 +83,14 @@ export default function Login() {
           <Button
             variant="outline"
             className="w-full"
-            onClick={() => signInReact('google')}
+            onClick={() => signInReact('google', { redirectTo: '/dashboard' })}
           >
             Sign in with Google
           </Button>
           <Button
             variant="outline"
             className="w-full"
-            onClick={() => signIn('passkey')}
+            onClick={() => signIn('passkey', { redirectTo: '/dashboard' })}
           >
             Sign in with Passkey
           </Button>

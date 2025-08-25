@@ -21,8 +21,8 @@ const CreateOrganizationSchema = z.object({
 export async function addOrganization(
   data: z.infer<typeof CreateOrganizationSchema>
 ) {
-  const user = await auth()
-  if (!user?.user || !user.user.id) {
+  const session = await auth()
+  if (!session?.user || !session.user.id) {
     redirect('/login')
   }
   // Validate with Zod
@@ -38,12 +38,12 @@ export async function addOrganization(
   try {
     const org = await db
       .insert(organization)
-      .values({ name: data.companyName, owner_user_id: user.user.id })
+      .values({ name: data.companyName, owner_user_id: session.user.id })
       .returning()
     // Update the user's roles to include the new organization
     await db.insert(roles).values({
       orgId: org[0].id,
-      userId: user.user.id,
+      userId: session.user.id,
       role: 'ADMIN',
     })
   } catch (error) {
@@ -62,6 +62,10 @@ export async function addOrganization(
       }
     }
     console.error('Error creating organization:', error)
+    return {
+      success: false,
+      message: 'Error creating organization, Please try again later.',
+    }
   }
   /*It's common to revalidate a path before redirecting the user to ensure they 
      see the most up-to-date data on the destination page. 

@@ -35,3 +35,9 @@ export {
   documentsRelations,
   patientToDocumentsRelations,
 } from './documents'
+
+export {
+  user_column_configs,
+  userColumnToUserRelation,
+  userToUserConfigRelation,
+} from './column_config'
