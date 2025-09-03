@@ -1,6 +1,7 @@
 import DashboardTable from '@/app/dashboard/dashboard-table'
 
-import DashboardTabs, {
+import {
+  DashboardTabs,
   TabLink,
 } from '@/app/dashboard/_components/dashboard-tabs'
 import * as dal from '@/lib/dal'

@@ -41,3 +41,8 @@ Allergies / meds / lab results
 Next appointment instructions or care plan
 
 Authorization number for homecare services
+
+Examples for testing from chatGPT
+
+Attachment 1: ADT_A03_789012.hl7 (HL7 v2)
+Attachment 2: CCD_DischargeSummary_789012.xml (simplified CCD)

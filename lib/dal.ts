@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { eq, and } from 'drizzle-orm'
 import { DrizzleQueryError } from 'drizzle-orm'
 import { organization, user_column_configs } from '@/db/schema'
-import { Column, ServiceRequestRecord } from '@/components/tableConfig'
+import { ServiceRequestRecord } from '@/components/tableConfig'
 export const getuserColumnConfig = async () => {
   const session = await auth()
   if (!session?.user || !session.user.id) {
@@ -76,6 +76,9 @@ export const getOrganization = async () => {
   const session = await auth()
   if (!session?.user || !session.user.id) {
     redirect('/login')
+  }
+  if (session.user?.roles[0] == undefined) {
+    return []
   }
   try {
     const userColumnConfig = await db.query.organization.findFirst({
