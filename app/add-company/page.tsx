@@ -24,7 +24,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { z } from 'zod'
-import { addOrganization } from '../actions/organization'
+import { addOrganization } from '@/actions/organization'
 
 export default function AddCompanyPage() {
   const baseSchema = z.object({
